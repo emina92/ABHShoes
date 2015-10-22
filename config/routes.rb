@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  scope :admin do
+    get '' => 'admin#index'
+    resources :products
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
