@@ -1,12 +1,10 @@
-<h1>Log In</h1>
-<%= form_tag user_sessions_path do %>
-	<%= label_tag :email, "Email Address" %>
-	<%= text_field_tag :email %>
-	<br/>
+<%= form_tag user_sessions_path, class: "form-horizontal login-form" do %>
+  <p class="title">Login</p>
+  <input type="text" name="email" id="email" placeholder="Email Address" class="form-control">
+  <br/>
 
-	<%=label_tag :password, "Password" %>
-	<%= password_field_tag :password %>
-	<br/>
+  <input type="password" name="password" id="password" placeholder="Password" class="form-control">
+  <br/>
 
-	<%= submit_tag "Log In" %>
+  <%= submit_tag "Log In", class: "btn btn-primary" %>
 <% end %>
