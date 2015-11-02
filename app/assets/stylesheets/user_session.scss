@@ -1,0 +1,22 @@
+// Place all the styles related to the user_session controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.login-form {
+	width: 400px;
+	margin: 80px auto;
+	background: #F0F0F0;
+	border-radius: 4px;
+}
+
+.title{
+	background: #428bca;
+	color: #fff;
+	padding: 15px;
+	font-size: 20px;
+	width: 100%;
+}
+.form-control{
+	margin: 0 auto;
+	width:90%;
+}

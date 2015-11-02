@@ -1,0 +1,10 @@
+<%= form_tag user_sessions_path, class: "form-horizontal login-form" do %>
+  <p class="title">Login</p>
+  <input type="text" name="email" id="email" placeholder="Email Address" class="form-control">
+  <br/>
+
+  <input type="password" name="password" id="password" placeholder="Password" class="form-control">
+  <br/>
+
+  <%= submit_tag "Log In", class: "btn btn-primary" %>
+<% end %>
