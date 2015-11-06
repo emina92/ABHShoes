@@ -44,9 +44,20 @@
     <%= error_span(@user[:password_confirmation]) %>
   </div>
 
+  <div class="control-group">
+    <label class="control-label">Choose type of user: </label><br>
+    <div class="checkbox">
+      <%= check_box_tag :admin_option, :admin, (@user.has_role? :admin) %>
+      <%= label_tag :option1, "Admin" %><br>
+      <%= check_box_tag :customer_option, :customer, (@user.has_role? :customer) %>
+      <%= label_tag :option2, "Customer" %><br>
+    </div>
+  </div>
 
-  <%= f.submit nil, :class => 'btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            users_path, :class => 'btn btn-default' %>
+  <div class="row">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+              users_path, :class => 'btn btn-default' %>
+  </div>
 
 <% end %>
