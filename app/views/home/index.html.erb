@@ -59,6 +59,13 @@
                     <li>
                         <a href="#">ACCESSORIES</a>
                     </li>
+                    <% if @current_user %>
+                        <li><%= link_to "Log Out", "/logout"  %>
+                        </li>
+                    <% else %>
+                        <li><%= link_to "Log In", "/login"  %>
+                        </li>
+                    <% end %>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
