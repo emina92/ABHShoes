@@ -1,10 +1,28 @@
-<%= form_tag user_sessions_path, class: "form-horizontal login-form" do %>
-  <p class="title">Login</p>
-  <input type="text" name="email" id="email" placeholder="Email Address" class="form-control">
-  <br/>
+<!DOCTYPE html>
+<html lang="en">
 
-  <input type="password" name="password" id="password" placeholder="Password" class="form-control">
-  <br/>
+<head>
 
-  <%= submit_tag "Log In", class: "btn btn-primary" %>
-<% end %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ABHShoes - Login</title>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  	<%= csrf_meta_tags %>
+
+</head>
+<body>
+	<%= form_tag user_sessions_path, class: "form-horizontal login-form" do %>
+	<p class="title">Login</p>
+	<input type="text" name="email" id="email" placeholder="Email Address" class="form-control">
+	<br/>
+
+	<input type="password" name="password" id="password" placeholder="Password" class="form-control">
+	<br/>
+
+	<%= submit_tag "Log In", class: "btn btn-primary" %>
+	<% end %>
+</body>
+</html>

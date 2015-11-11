@@ -1,4 +1,4 @@
-<%= form_for @product, :html => { :class => "form-horizontal" } do |f| %>
+<%= form_for @product, :html => { :class => "form-horizontal product" } do |f| %>
 
     <% if @product.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -37,9 +37,10 @@
     <%= error_span(@product[:price]) %>
   </div>
 
-
-  <%= f.submit nil, :class => 'btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            products_path, :class => 'btn btn-default' %>
+  <div class="row">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+              products_path, :class => 'btn btn-default' %>
+  </div>
 
 <% end %>

@@ -26,6 +26,7 @@ class UsersController < AdminController
     if @user.save
       @user.add_role :admin if params.has_key?(:admin_option)
       @user.add_role :customer if params.has_key?(:customer_option)
+      @user.add_role :customer if !params.has_key?(:customer_option) && !params.has_key?(:admin_option)
       redirect_to @user, notice: 'User was successfully created.'
     else
       render :new 
@@ -39,6 +40,7 @@ class UsersController < AdminController
       @user.remove_role :customer
       @user.add_role :admin if params.has_key?(:admin_option)
       @user.add_role :customer if params.has_key?(:customer_option)
+      @user.add_role :customer if !params.has_key?(:customer_option) && !params.has_key?(:admin_option)
       redirect_to @user, notice: 'User was successfully updated.'
     else
       render :edit 

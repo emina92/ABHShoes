@@ -1,5 +1,5 @@
 class UserSessionsController < ApplicationController
-  
+  layout false
   def new
   end
 
