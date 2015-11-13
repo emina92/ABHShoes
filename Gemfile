@@ -5,6 +5,7 @@ ruby "2.2.3"
 gem 'rails', '4.2.4'
 gem 'bcrypt', '~> 3.1.2'
 gem "paperclip", "~> 4.3"
+gem "paperclip-dropbox", ">= 1.1.7"
 # Use SCSS for stylesheets
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
