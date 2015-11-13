@@ -2,26 +2,28 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-<table class="table">
+<table class="table-bordered">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:price) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th class="text-center"><%= model_class.human_attribute_name(:id) %></th>
+      <th class="text-center"><%= model_class.human_attribute_name(:title) %></th>
+      <th class="text-center"><%= model_class.human_attribute_name(:description) %></th>
+      <th class="text-center"><%= model_class.human_attribute_name(:price) %></th>
+      <th class="text-center"><%= model_class.human_attribute_name(:image) %></th>
+      <th class="text-center"><%= model_class.human_attribute_name(:created_at) %></th>
+      <th class="text-center"><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= link_to product.id, product_path(product) %></td>
-        <td><%= product.title %></td>
-        <td><%= product.description %></td>
-        <td><%= product.price %></td>
-        <td><%=l product.created_at %></td>
-        <td>
+        <td class="col-md-1 text-center"><%= link_to product.id, product_path(product) %></td>
+        <td class="col-md-2 text-center"><%= product.title %></td>
+        <td class="col-md-2 text-center"><%= product.description %></td>
+        <td class="col-md-1 text-center"><%= product.price %></td>
+        <td class="col-md-2 text-center"><%= image_tag product.image.url(:thumb) %></td>
+        <td class="col-md-2 text-center"><%=l product.created_at %></td>
+        <td class="col-md-1 text-center">
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_product_path(product), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -34,7 +36,8 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_product_path,
-            :class => 'btn btn-primary' %>
+<div class="row">
+  <%= link_to t('.new', :default => t("helpers.links.new")),
+              new_product_path,
+              :class => 'btn btn-primary' %>
+</div>

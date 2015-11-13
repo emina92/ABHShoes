@@ -35,7 +35,7 @@
     <% @products.each { |product| %>
         <div class="col-sm-4 col-lg-4 col-md-4">
             <div class="thumbnail">
-                <%= image_tag product.image_name %>
+                <%= image_tag product.image %>
                 <div class="caption">
                     <h4 class="pull-right">$<%= product.price %></h4>
                     <h4><a href="#"><%= product.title %></a>
