@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'logout'  => 'user_sessions#destroy'
 
   get 'home/index'
+  get 'products/:id' => 'home#show', :as => :show_product
 
   resources :user_sessions, only: [:new, :create]
 
