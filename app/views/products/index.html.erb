@@ -20,8 +20,8 @@
         <td class="col-md-1 text-center"><%= link_to product.id, product_path(product) %></td>
         <td class="col-md-2 text-center"><%= product.title %></td>
         <td class="col-md-2 text-center"><%= product.description %></td>
-        <td class="col-md-1 text-center"><%= product.price %></td>
-        <td class="col-md-2 text-center"><%= image_tag product.image.url(:thumb) %></td>
+        <td class="col-md-1 text-center"><%= product.price %>$</td>
+        <td class="col-md-2 text-center"><%= image_tag(product.image, class: "menu_icon") %></td>
         <td class="col-md-2 text-center"><%=l product.created_at %></td>
         <td class="col-md-1 text-center">
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
