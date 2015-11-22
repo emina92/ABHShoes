@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
   	@products = Product.all
-  end
+ end
   def show
   	@product = Product.find(params[:id])
   end

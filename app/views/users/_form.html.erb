@@ -16,30 +16,30 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :full_name, :class => 'control-label' %>
+    <%= f.label :full_name, :class => 'control-label required' %>
     <div class="controls">
       <%= f.text_field :full_name, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:full_name]) %>
   </div>
   <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
+    <%= f.label :email, :class => 'control-label required' %>
     <div class="controls">
-      <%= f.text_field :email, :class => 'form-control' %>
+      <%= f.email_field :email, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:email]) %>
   </div>
   <div class="control-group">
-    <%= f.label :password, :class => 'control-label' %>
+    <%= f.label :password, :class => 'control-label required' %>
     <div class="controls">
-      <%= f.text_field :password, :class => 'form-control' %>
+      <%= f.password_field :password, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:password]) %>
   </div>
   <div class="control-group">
     <%= f.label :password_confirmation, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :password_confirmation, :class => 'form-control' %>
+      <%= f.password_field :password_confirmation, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:password_confirmation]) %>
   </div>
@@ -48,9 +48,9 @@
     <label class="control-label">Choose type of user: </label><br>
     <div class="checkbox">
       <%= check_box_tag :admin_option, :admin, (@user.has_role? :admin) %>
-      <%= label_tag :option1, "Admin" %><br>
+      <%= label_tag :admin_option, "Admin" %><br>
       <%= check_box_tag :customer_option, :customer, (@user.has_role? :customer) %>
-      <%= label_tag :option2, "Customer" %><br>
+      <%= label_tag :customer_option, "Customer" %><br>
     </div>
   </div>
 

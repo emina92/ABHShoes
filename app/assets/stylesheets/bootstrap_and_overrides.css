@@ -12,3 +12,7 @@ table th.text-center, table td.text-center {
 .row {
 	margin:20px 0;
 }
+ .field_with_errors .form-control{ 
+	border: 1px solid red !important;
+}
+label.required:after{content:"*"}
