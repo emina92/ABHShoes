@@ -31,8 +31,11 @@
   </div>
   <div class="control-group">
     <%= f.label :price, :class => 'control-label required' %>
-    <div class="controls">
-      <%= f.text_field :price, :class => 'form-control' %>
+    <div class="left-inner-addon">
+      <span>$</span>
+      <div class="controls">
+        <%= f.text_field :price, :class => 'form-control' %>
+      </div>
     </div>
     <%= error_span(@product[:price]) %>
   </div>
@@ -42,6 +45,13 @@
       <%= f.file_field :image, :class => 'form-control' %>
     </div>
     <%= error_span(@product[:image]) %>
+  </div>
+   <div class="control-group">
+    <%= f.label :category_id, :class => 'control-label required' %>
+    <div class="controls">
+      <%= f.collection_select :category_id, @categories, :id, :name, {}, {:class=>'form-control'} %>
+    </div>
+    <%= error_span(@product[:price]) %>
   </div>
 
   <div class="row">
