@@ -53,6 +53,13 @@
     </div>
     <%= error_span(@product[:price]) %>
   </div>
+  <div class="control-group">
+    <%= f.label :brand_id, :class => 'control-label required' %>
+    <div class="controls">
+      <%= f.collection_select :brand_id, @brands, :id, :name, {}, {:class=>'form-control'} %>
+    </div>
+    <%= error_span(@product[:price]) %>
+  </div>
 
   <div class="row">
     <%= f.submit nil, :class => 'btn btn-primary' %>
