@@ -2,7 +2,7 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-<table class="table-bordered">
+<table class="table table-striped">
   <thead>
     <tr>
       <th class="text-center"><%= model_class.human_attribute_name(:id) %></th>
@@ -16,12 +16,12 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td class="col-md-1 text-center"><%= link_to product.id, product_path(product) %></td>
-        <td class="col-md-2 text-center"><%= product.title %></td>
-        <td class="col-md-2 text-center"><%= product.description %></td>
-        <td class="col-md-1 text-center"><%= product.price %>$</td>
-        <td class="col-md-2 text-center"><%=l product.created_at %></td>
-        <td class="col-md-1 text-center">
+        <td class="text-center"><%= link_to product.id, product_path(product) %></td>
+        <td class="text-center"><%= product.title %></td>
+        <td class="text-center"><%= product.description %></td>
+        <td class="text-center"><%= product.price %>$</td>
+        <td class="text-center"><%= product.created_at.strftime("%b %d, %Y") %></td>
+        <td class="text-center">
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_product_path(product), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

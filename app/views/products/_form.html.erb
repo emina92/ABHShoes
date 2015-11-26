@@ -16,7 +16,7 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :title, :class => 'control-label' %>
+    <%= f.label :title, :class => 'control-label required' %>
     <div class="controls">
       <%= f.text_field :title, :class => 'form-control' %>
     </div>
@@ -30,14 +30,14 @@
     <%= error_span(@product[:description]) %>
   </div>
   <div class="control-group">
-    <%= f.label :price, :class => 'control-label' %>
+    <%= f.label :price, :class => 'control-label required' %>
     <div class="controls">
       <%= f.text_field :price, :class => 'form-control' %>
     </div>
     <%= error_span(@product[:price]) %>
   </div>
    <div class="control-group">
-    <%= f.label :image, :class => 'control-label' %>
+    <%= f.label :image, :class => 'control-label required' %>
     <div class="controls">
       <%= f.file_field :image, :class => 'form-control' %>
     </div>
