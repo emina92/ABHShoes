@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   get 'store/:id' => 'store#show', :as => :store_product
 
-  get 'categories/show'
-
   get 'login'   => 'user_sessions#new'
   get 'logout'  => 'user_sessions#destroy'
 
