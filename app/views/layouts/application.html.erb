@@ -50,7 +50,7 @@
                 <ul class="nav navbar-nav">
                     <% all_categories.each { |category| %>
                         <li>
-                            <%= link_to category.name, "/store/#{category.id}" %>
+                            <%= link_to category.name.capitalize, "/store/#{category.id}" %>
                         </li>
                     <% } %>
                     <% if @current_user %>
@@ -73,13 +73,17 @@
         <div class="row">
 
             <div class="col-md-3">
-                <div class="list-group">
-                    <a href="#" class="list-group-item">Ladies</a>
-                    <a href="#" class="list-group-item">Mens</a>
-                    <a href="#" class="list-group-item">Childrens</a>
-                    <a href="#" class="list-group-item">Sports</a>
-                    <a href="#" class="list-group-item">Accessories</a>
-                </div>
+                <% if content_for?(:sidebar) %>
+                    <%= yield :sidebar %>
+                <% else %>
+                    <div class="list-group">
+                         <% all_categories.each { |category| %>
+                            <li>
+                                <%= link_to category.name.capitalize, "/store/#{category.id}", class: "list-group-item" %>
+                            </li>
+                        <% } %>
+                    </div>
+                <% end %>
             </div>
 
             <div class="col-md-9">
@@ -94,6 +98,14 @@
     <div class="container">
 
         <hr>
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; ABHShoes 2015</p>
+                </div>
+            </div>
+        </footer>
 
     </div>
     <!-- /.container -->
