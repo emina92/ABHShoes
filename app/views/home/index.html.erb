@@ -29,12 +29,13 @@
 
     <% @products_new.each { |product| %>
         <div class="col-sm-4 col-lg-4 col-md-4">
+            <%= link_to show_product_path(product.id) do %>
             <div class="thumbnail">
-            <span class="label newproduct">New</span>
+            <span class="label newproduct">NEW</span>
                <%= image_tag product.image %>
                 <div class="caption">
                     <h4 class="pull-right">$<%= product.price %></h4>
-                    <h4><%= link_to product.title, show_product_path(product.id) %></h4>
+                    <h4><%= product.title %></h4>
                     <p><%= product.description %></p>
                 </div>
                 <div class="ratings">
@@ -48,6 +49,33 @@
                     </p>
                 </div>
             </div>
+            <% end %>
+        </div>
+   <% } %>
+   <% @products_sale.each { |product| %>
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <%= link_to show_product_path(product.id) do %>
+            <div class="thumbnail">
+            <span class="label newproduct">SALE</span>
+               <%= image_tag product.image %>
+                <div class="caption">
+                    <h4 class="line-through">$<%= product.price.round(2) %></h4>
+                    <h4 class="pull-right price">$<%= product.apply_discount.round(2) %></h4>
+                    <h4><%= product.title %></h4>
+                    <p><%= product.description %></p>
+                </div>
+                <div class="ratings">
+                    <p class="pull-right">15 reviews</p>
+                    <p>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    </p>
+                </div>
+            </div>
+            <% end %>
         </div>
    <% } %>
 </div>
