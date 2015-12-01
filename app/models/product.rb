@@ -12,4 +12,18 @@ class Product < ActiveRecord::Base
   	validates_attachment :image,
   	:presence => true,
   	:content_type => { :content_type => /^image\/(jpeg|png|gif|tiff)$/ }
+
+  def self.get_discounted_items
+    self.where("discount IS NOT NULL")
+  end 
+
+  def apply_discount()
+    price = self.price
+    discount = self.discount
+    return price if discount.nil?
+    if discount.present?
+        price = price - ((price / 100) * discount)
+        return price
+    end
+  end
 end
