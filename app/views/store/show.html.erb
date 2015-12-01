@@ -15,9 +15,11 @@
       <% } %>
     </select>
     <label>Color: </label>
-    <select name="color" class="form-control filter">
-      <%= options_for_select([["Select color",""], ["Red","red"],  ["Pink", "pink"], ["Orange", "orange"], ["Yellow", "yellow"],
-        ["Green", "green"], ["Blue", "blue"], ["Navy", "navy"], ["Gray", "gray"], ["Black", "black"], ["Brown", "brown"]],@color) %>
+     <select name="color_id" class="form-control filter">
+      <option value="">Select color</option>
+      <% Color.all.each {|color| %>
+        <option value="<%=color.id%>" <% if @color_id == color.id.to_s %>selected<% end %>><%= color.name %></option>
+      <% } %>
     </select>
     <input type="submit" value="Apply Filters" class="form-control">
   </form>

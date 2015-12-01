@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
 	belongs_to :category
   belongs_to :brand
+  has_many :colors
 
 	validates :title, presence:true
 	validates :price, presence:true
