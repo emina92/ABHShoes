@@ -12,7 +12,21 @@ table th.text-center, table td.text-center {
 .row {
 	margin:20px 0;
 }
+
  .field_with_errors .form-control{ 
 	border: 1px solid red !important;
 }
+
 label.required:after{content:"*"}
+
+.left-inner-addon {
+    position: relative;
+}
+.left-inner-addon input {
+    padding-left: 22px;    
+}
+.left-inner-addon span {
+    position: absolute;
+    padding: 7px 12px;
+    pointer-events: none;
+}

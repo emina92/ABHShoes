@@ -48,21 +48,11 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                   <li>
-                        <a href="#">LADIES</a>
-                    </li>
-                    <li>
-                        <a href="#">MENS</a>
-                    </li>
-                    <li>
-                        <a href="#">CHILDRENS</a>
-                    </li>
-                    <li>
-                        <a href="#">SPORTS</a>
-                    </li>
-                    <li>
-                        <a href="#">ACCESSORIES</a>
-                    </li>
+                    <% all_categories.each { |category| %>
+                        <li>
+                            <%= link_to category.name, "/store/#{category.id}" %>
+                        </li>
+                    <% } %>
                     <% if @current_user %>
                         <li><%= link_to "Log Out", "/logout"  %>
                         </li>

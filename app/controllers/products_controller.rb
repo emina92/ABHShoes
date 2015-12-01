@@ -14,10 +14,12 @@ class ProductsController < AdminController
   # GET /products/new
   def new
     @product = Product.new
+    @categories = Category.order(:name)
   end
 
   # GET /products/1/edit
   def edit
+    @categories = Category.order(:name)
   end
 
   # POST /products
@@ -27,6 +29,7 @@ class ProductsController < AdminController
     if @product.save
       redirect_to @product, notice: 'Product was successfully created.'
     else
+      @categories = Category.order(:name)
       render :new
     end
   end
@@ -54,6 +57,6 @@ class ProductsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :description, :price, :image)
+      params.require(:product).permit(:title, :description, :price, :image, :category_id)
     end
 end

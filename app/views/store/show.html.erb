@@ -1,0 +1,14 @@
+<div class="row">
+    <% @category.products.each { |product| %>
+        <div class="col-sm-1 col-lg-4 col-md-1">
+            <div class="thumbnail">
+               <%= image_tag product.image %>
+               <div class="caption">
+                    <h4 class="pull-right">$<%= product.price %></h4>
+                    <h4><%= link_to product.title, show_product_path(product.id) %></h4>
+                    <p><%= product.description %></p>
+               </div>
+            </div>
+        </div>
+   <% } %>
+</div>
