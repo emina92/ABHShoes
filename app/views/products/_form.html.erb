@@ -46,12 +46,36 @@
     </div>
     <%= error_span(@product[:image]) %>
   </div>
+  <div class="control-group">
+    <%= f.label :size, :class => 'control-label required' %>
+    <div class="controls">
+      <%= f.text_field :size, :class => 'form-control' %>
+    </div>
+    <%= error_span(@product[:size]) %>
+  </div>
    <div class="control-group">
     <%= f.label :category_id, :class => 'control-label required' %>
     <div class="controls">
       <%= f.collection_select :category_id, @categories, :id, :name, {}, {:class=>'form-control'} %>
     </div>
-    <%= error_span(@product[:price]) %>
+    <%= error_span(@product[:category_id]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :brand_id, :class => 'control-label required' %>
+    <div class="controls">
+      <%= f.collection_select :brand_id, @brands, :id, :name, {}, {:class=>'form-control'} %>
+    </div>
+    <%= error_span(@product[:brand_id]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :color, :class => 'control-label required' %>
+    <div class="controls">
+      <select name="product[color]" id="product_color" class="form-control">
+        <%= options_for_select([["Select color",""], ["Red","red"],  ["Pink", "pink"], ["Orange", "orange"], ["Yellow", "yellow"],
+        ["Green", "green"], ["Blue", "blue"], ["Navy", "navy"], ["Gray", "gray"], ["Black", "black"], ["Brown", "brown"]],@product.color) %>
+      </select>
+    </div>
+    <%= error_span(@product[:color]) %>
   </div>
 
   <div class="row">

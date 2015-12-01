@@ -26,9 +26,11 @@
 </div>
 
 <div class="row">
-    <% @products.each { |product| %>
+
+    <% @products_new.each { |product| %>
         <div class="col-sm-4 col-lg-4 col-md-4">
             <div class="thumbnail">
+            <span class="label newproduct">New</span>
                <%= image_tag product.image %>
                 <div class="caption">
                     <h4 class="pull-right">$<%= product.price %></h4>

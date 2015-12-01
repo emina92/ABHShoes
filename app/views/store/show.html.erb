@@ -1,5 +1,30 @@
+<% content_for :sidebar do %>
+  <form class="form form-horizontal" method="get">
+    <p class="filter">FILTER</p>
+    <label>Min price: </label>
+    <input type="text" name="min_price" placeholder="Min price" class="form-control filter" value="<%= @min_price %>">
+    <label>Max price: </label>
+    <input type="text" name="max_price" placeholder="Max price" class="form-control filter" value="<%= @max_price %>">
+    <label>Size: </label>
+    <input type="text" name="size" placeholder="Size" class="form-control filter" value="<%= @size %>">
+    <label>Brand: </label>
+    <select name="brand_id" class="form-control filter">
+      <option value="">Select brand</option>
+      <% Brand.all.each {|brand| %>
+        <option value="<%=brand.id%>" <% if @brand_id == brand.id.to_s %>selected<% end %>><%= brand.name %></option>
+      <% } %>
+    </select>
+    <label>Color: </label>
+    <select name="color" class="form-control filter">
+      <%= options_for_select([["Select color",""], ["Red","red"],  ["Pink", "pink"], ["Orange", "orange"], ["Yellow", "yellow"],
+        ["Green", "green"], ["Blue", "blue"], ["Navy", "navy"], ["Gray", "gray"], ["Black", "black"], ["Brown", "brown"]],@color) %>
+    </select>
+    <input type="submit" value="Filter" class="form-control">
+  </form>
+<% end %>
+
 <div class="row">
-    <% @category.products.each { |product| %>
+    <% @products.each { |product| %>
         <div class="col-sm-1 col-lg-4 col-md-1">
             <div class="thumbnail">
                <%= image_tag product.image %>

@@ -1,0 +1,39 @@
+<%= form_for @brand, :html => { :class => "form-horizontal brand" } do |f| %>
+
+    <% if @brand.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@brand.errors.count, "error") %> prohibited this brand from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @brand.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label required' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%= error_span(@brand[:title]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :description, :class => 'form-control' %>
+    </div>
+    <%= error_span(@brand[:description]) %>
+  </div>
+
+  <div class="row">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+              brands_path, :class => 'btn btn-default' %>
+  </div>
+
+<% end %>
