@@ -54,3 +54,6 @@ label.required:after{content:"*"}
 a:hover {
   text-decoration: none;
 }
+.color {
+  font-size: 18px;
+}
