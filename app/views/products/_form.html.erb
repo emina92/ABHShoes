@@ -74,6 +74,7 @@
     </div>
     <%= error_span(@product[:color_id]) %>
   </div>
+
   <div class="control-group">
     <%= f.label :discount, :class => 'control-label required' %>
     <div class="right-inner-addon">
@@ -83,6 +84,20 @@
       </div>
     </div>
     <%= error_span(@product[:discount]) %>
+  </div>
+
+  <h2>Product Variants </h2>
+   <div class="control-group">
+    <%= f.fields_for :product_variants do |product_variant| %>
+      <div class="controls">
+        <%= product_variant.label :size, :class => 'control-label required' %>
+        <%= product_variant.text_field :size, :class => 'form-control' %>
+        <%= product_variant.label :quantity, :class => 'control-label required' %>
+        <%= product_variant.text_field :quantity, :class => 'form-control' %>
+        <%= product_variant.check_box :_destroy %>
+        <%= product_variant.label :_destroy, 'Delete' %>
+      </div>
+    <% end %>
   </div>
 
   <div class="row">

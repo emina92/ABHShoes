@@ -2,6 +2,11 @@ class Product < ActiveRecord::Base
 	belongs_to :category
   belongs_to :brand
   has_many :colors
+  has_many :product_variants
+
+  accepts_nested_attributes_for :product_variants, 
+                                reject_if: proc {|attributes| attributes['size'].blank? },
+                                allow_destroy: true
 
 	validates :title, presence:true
 	validates :price, presence:true
