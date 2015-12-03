@@ -49,6 +49,7 @@ class ProductsController < AdminController
     else
       @categories = Category.order(:name)
       @brands = Brand.order(:name)
+      @colors = Color.order(:name)
       render :edit
     end
   end
@@ -67,7 +68,7 @@ class ProductsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :description, :price, :image, :category_id, :brand_id, :color, :size, :discount,
+      params.require(:product).permit(:title, :description, :price, :image, :category_id, :brand_id, :size, :discount,
         product_variants_attributes: [:id, :size, :quantity, :color_id, :_destroy])
     end
 end
