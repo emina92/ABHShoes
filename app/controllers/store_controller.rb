@@ -5,13 +5,13 @@ class StoreController < ApplicationController
 		@min_price = params[:min_price]
 		@max_price = params[:max_price]
 		@brand_id = params[:brand_id]
-		@color = params[:color]
+		@color_id = params[:color_id]
 		@size = params[:size]
 		@products = @category.products
 		@products = @products.where("price > ?", @min_price) if params[:min_price].present?
 		@products = @products.where("price < ?", @max_price) if params[:max_price].present?
 		@products = @products.where("brand_id = ?", @brand_id) if params[:brand_id].present?
-		@products = @products.where("color = ?", @color) if params[:color].present?
+		@products = @products.where("color_id = ?", @color_id) if params[:color_id].present?
 		@products = @products.where("size = ?", @size) if params[:size].present?
 	end
 end

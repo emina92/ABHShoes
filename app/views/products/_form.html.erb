@@ -68,14 +68,11 @@
     <%= error_span(@product[:brand_id]) %>
   </div>
   <div class="control-group">
-    <%= f.label :color, :class => 'control-label required' %>
+    <%= f.label :color_id, :class => 'control-label required' %>
     <div class="controls">
-      <select name="product[color]" id="product_color" class="form-control">
-        <%= options_for_select([["Select color",""], ["Red","red"],  ["Pink", "pink"], ["Orange", "orange"], ["Yellow", "yellow"],
-        ["Green", "green"], ["Blue", "blue"], ["Navy", "navy"], ["Gray", "gray"], ["Black", "black"], ["Brown", "brown"]],@product.color) %>
-      </select>
+      <%= f.collection_select :color_id, @colors, :id, :name, {}, {:class=>'form-control'} %>
     </div>
-    <%= error_span(@product[:color]) %>
+    <%= error_span(@product[:color_id]) %>
   </div>
   <div class="control-group">
     <%= f.label :discount, :class => 'control-label required' %>
