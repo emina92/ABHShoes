@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
 
-	before_filter :check_admin_authentication
+	before_filter :check_admin_authentication, :set_no_sidebar
 	
   def index
   end
@@ -11,5 +11,9 @@ class AdminController < ApplicationController
     elsif !@current_user.has_role? (:admin)
     	redirect_to "/"
     end
+  end
+
+  def set_no_sidebar
+    @no_sidebar = true
   end
 end

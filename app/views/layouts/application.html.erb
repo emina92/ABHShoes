@@ -62,6 +62,11 @@
                           <ul class="dropdown-menu">
                             <% if @current_user.has_role? (:admin) %>
                                 <li><a href="/admin">Admin</a></li>
+                                <li><%= link_to "Products", "/admin/products"  %></li>
+                                <li><%= link_to "Users", "/admin/users"  %></li>
+                                <li><%= link_to "Categories", "/admin/categories"  %></li>
+                                <li><%= link_to "Brands", "/admin/brands"  %></li>
+                                <li><%= link_to "Colors", "/admin/colors"  %></li>
                                 <li role="separator" class="divider"></li>
                             <% end %>
                             <li>
@@ -85,24 +90,29 @@
     <div class="container">
 
         <div class="row">
+            <% if @no_sidebar %>
+                 <div class="col-md-12">
+                    <%= yield %>
+                </div>
+            <% else %>
+                <div class="col-md-3">
+                    <% if content_for?(:sidebar) %>
+                        <%= yield :sidebar %>
+                    <% else %>
+                        <div class="list-group">
+                            <% all_categories.each { |category| %>
+                                <li>
+                                    <%= link_to category.name.capitalize, "/store/#{category.id}", class: "list-group-item" %>
+                                </li>
+                            <% } %>
+                        </div>
+                    <% end %>
+                </div>
 
-            <div class="col-md-3">
-                <% if content_for?(:sidebar) %>
-                    <%= yield :sidebar %>
-                <% else %>
-                    <div class="list-group">
-                         <% all_categories.each { |category| %>
-                            <li>
-                                <%= link_to category.name.capitalize, "/store/#{category.id}", class: "list-group-item" %>
-                            </li>
-                        <% } %>
-                    </div>
-                <% end %>
-            </div>
-
-            <div class="col-md-9">
-            	<%= yield %>
-            </div>
+                <div class="col-md-9">
+            	   <%= yield %>
+                </div>
+            <% end %>
 
         </div>
 

@@ -1,6 +1,5 @@
 class CategoriesController < AdminController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-  layout "admin"
 
   # GET /categories
   def index

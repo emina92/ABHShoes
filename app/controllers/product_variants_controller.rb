@@ -1,6 +1,5 @@
-class ProductVariantsController < ApplicationController
+class ProductVariantsController < AdminController
   before_action :set_product_variant, only: [:show, :edit, :update, :destroy]
-  layout "admin"
 
   # GET /product_variants
   def index

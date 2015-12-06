@@ -1,6 +1,5 @@
-class ColorsController < ApplicationController
+class ColorsController < AdminController
 	before_action :set_color, only: [:show, :edit, :update, :destroy]
-  layout "admin"
 
 	# GET /colors
 	def index
