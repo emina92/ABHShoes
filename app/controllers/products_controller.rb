@@ -26,7 +26,6 @@ class ProductsController < AdminController
     @categories = Category.order(:name)
     @brands = Brand.order(:name)
     @colors = Color.order(:name)
-    @product.product_variants.build
   end
 
   # POST /products
