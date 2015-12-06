@@ -17,7 +17,7 @@
       <tr>
         <td class="text-center"><%= link_to category.id, category_path(category) %></td>
         <td class="text-center"><%= category.name %></td>
-        <td class="text-center"><%= category.description %></td>
+        <td class="text-center description" title="<%= category.description %>"><%= category.description %></td>
         <td class="text-center"><%= category.created_at.strftime("%b %d, %Y") %></td>
         <td class="text-center">
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

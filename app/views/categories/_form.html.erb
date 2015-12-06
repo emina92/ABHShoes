@@ -16,16 +16,16 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :name, :class => 'control-label required' %>
+    <%= f.label :name, :class => 'control-label required'%>
     <div class="controls">
-      <%= f.text_field :name, :class => 'form-control' %>
+      <%= f.text_field :name, :class => 'form-control', maxlength: 20, required: true %>
     </div>
     <%= error_span(@category[:title]) %>
   </div>
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :description, :class => 'form-control' %>
+      <%= f.text_field :description, :class => 'form-control', maxlength: 50 %>
     </div>
     <%= error_span(@category[:description]) %>
   </div>
