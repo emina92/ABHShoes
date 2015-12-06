@@ -17,7 +17,7 @@
       <tr>
         <td class="text-center"><%= link_to brand.id, brand_path(brand) %></td>
         <td class="text-center"><%= brand.name %></td>
-        <td class="text-center"><%= brand.description %></td>
+        <td class="text-center description" title="<%= brand.description %>"><%= brand.description %></td>
         <td class="text-center"><%= brand.created_at.strftime("%b %d, %Y") %></td>
         <td class="text-center">
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
