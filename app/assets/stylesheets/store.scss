@@ -10,5 +10,23 @@ label {
 p.filter {
 	color: #808080;
 	font-weight: bold;
+	margin-bottom: 30px;
+}
+#max_price_label {
+	color: #808080;
+	float: right;
+	position: relative;
+	bottom: 8px;
+}
+.slider {
 	margin-bottom:30px;
+}
+
+#min_price_label {
+	color: #808080;
+	position: relative;
+	bottom: 8px;
+}
+#range {
+	margin-bottom: 12px;
 }

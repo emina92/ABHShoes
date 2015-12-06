@@ -1,12 +1,32 @@
 <% content_for :sidebar do %>
   <form class="form form-horizontal" method="get">
     <p class="filter">FILTER</p>
-    <label>Min price: </label>
-    <input type="text" name="min_price" placeholder="Min price" class="form-control filter" value="<%= @min_price %>">
-    <label>Max price: </label>
-    <input type="text" name="max_price" placeholder="Max price" class="form-control filter" value="<%= @max_price %>">
-    <label>Size: </label>
-    <input type="text" name="size" placeholder="Size" class="form-control filter" value="<%= @size %>">
+    <label id="range">Price range: </label>
+    <input type="hidden" id="min_price" name="min_price" placeholder="Min price" class="form-control filter" value="<%= @min_price %>">
+    <input type="hidden" id="max_price" name="max_price" placeholder="Max price" class="form-control filter" value="<%= @max_price %>">
+    <div class="range-values">
+      <span id="min_price_label"><%= @min_price %></span>
+      <span id="max_price_label"><%= @max_price %></span>
+    </div>
+    <div id="slider-range" class="slider"></div>
+    <script>
+      $(function() {
+        $("#slider-range").slider({
+          range: true,
+          min: 0,
+          max: <%= @price_max %>,
+          values: [ <%= @min_price.to_i %>, <%= @max_price.to_i %> ],
+          slide: function(event, ui) {
+            var min = ui.values[0];
+            var max = ui.values[1];
+            $("#min_price").val(min);
+            $("#max_price").val(max);
+            $("#min_price_label").text(min);
+            $("#max_price_label").text(max);
+          }
+        });
+  });
+  </script>
     <label>Brand: </label>
     <select name="brand_id" class="form-control filter">
       <option value="">Select brand</option>
@@ -20,6 +40,11 @@
       <% Color.all.each {|color| %>
         <option style="background-color: <%=color.hex%>" value="<%=color.id%>" <% if @color_id == color.id.to_s %>selected<% end %> class="color"><%= color.name %></option>
       <% } %>
+    </select>
+    <label>Size: </label>
+    <select name="size" class="form-control filter">
+      <option value="">Select size</option>
+      <%= options_for_select(Product.size_options, @size) %>
     </select>
     <input type="submit" value="Apply Filters" class="form-control">
   </form>
