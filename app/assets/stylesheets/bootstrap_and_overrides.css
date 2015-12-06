@@ -57,3 +57,10 @@ a:hover {
 .color {
   font-size: 18px;
 }
+li.variant {
+  list-style: none !important;
+}
+
+.controls.variant {
+  margin-top: 20px;
+}

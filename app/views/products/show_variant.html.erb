@@ -1,0 +1,25 @@
+<div class="page-header">
+<h2><%= @product.title %></h2>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th class="text-center">Variant_id</th>
+      <th class="text-center">Size</th>
+      <th class="text-center">Quantity</th>
+      <th class="text-center">Color</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @product.product_variants.each  do |product_variant| %>
+      <tr>
+        <td class="text-center"><%= product_variant.id %></td>
+        <td class="text-center"><%= product_variant.size %></td>
+        <td class="text-center"><%= product_variant.quantity %></td>
+        <td class="text-center"><%= product_variant.color.name %></td>
+      </tr>
+    <% end %>
+  <tbody>
+</table>
+

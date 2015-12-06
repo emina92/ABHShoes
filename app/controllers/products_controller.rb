@@ -1,5 +1,5 @@
 class ProductsController < AdminController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :show_variant, :edit, :update, :destroy]
   layout "admin"
 
   # GET /products
@@ -9,6 +9,8 @@ class ProductsController < AdminController
 
   # GET /products/1
   def show
+  end
+  def show_variant
   end
 
   # GET /products/new
