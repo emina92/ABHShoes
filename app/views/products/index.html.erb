@@ -11,6 +11,7 @@
       <th class="text-center"><%= model_class.human_attribute_name(:price) %></th>
       <th class="text-center"><%= model_class.human_attribute_name(:category_id) %></th>
       <th class="text-center"><%= model_class.human_attribute_name(:brand_id) %></th>
+      <th class="text-center">Product Variants</th>
       <th class="text-center"><%= model_class.human_attribute_name(:created_at) %></th>
       <th class="text-center"><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -18,12 +19,17 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td class="text-center"><%= link_to product.id, product_path(product) %></td>
-        <td class="text-center"><%= product.title %></td>
-        <td class="text-center"><%= product.description %></td>
+        <td class="text-center"><%= product.id %></td>
+        <td class="text-center"><%= link_to product.title, product_path(product) %></td>
+        <td class="text-center description" title="<%= product.description %>"><%= product.description %></td>
         <td class="text-center"><%= product.price %>$</td>
         <td class="text-center"><%= product.category.name %></td>
         <td class="text-center"><%= product.brand.name %></td>
+        <td class="text-center">
+          <% if product.product_variants.any? %>
+            <%= link_to "Show variants", product_variant_path(product.id), class: "variant" %>
+          <% end %>
+        </td>
         <td class="text-center"><%= product.created_at.strftime("%b %d, %Y") %></td>
         <td class="text-center">
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
