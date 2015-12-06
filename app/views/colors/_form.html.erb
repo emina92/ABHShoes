@@ -1,4 +1,4 @@
-<%= form_for @color, :html => { :class => "form-horizontal color" } do |f| %>
+<%= form_for @color, :html => { :class => "form-horizontal color col-md-6 col-lg-7" } do |f| %>
 
     <% if @color.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -18,14 +18,15 @@
   <div class="control-group">
     <%= f.label :name, :class => 'control-label required' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'form-control' %>
+      <%= f.text_field :name, :class => 'form-control', required: true %>
     </div>
     <%= error_span(@color[:name]) %>
   </div>
   <div class="control-group">
-    <%= f.label :hex, :class => 'control-label' %>
+    <%= f.label :hex, :class => 'control-label required' %>
     <div class="controls">
-      <%= f.text_field :hex, :class => 'form-control' %>
+      <%= f.color_field :hex, :class => "form-control", required: true %>
+      
     </div>
     <%= error_span(@color[:hex]) %>
   </div>
@@ -35,5 +36,19 @@
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
               colors_path, :class => 'btn btn-default' %>
   </div>
+
+  <script>
+    $("form").change(function () {
+      if (!window.onbeforeunload) {
+        window.onbeforeunload = function() {
+          return "You have unsaved changes.";
+        };
+      };
+    })
+
+    $("form").submit(function () {
+      window.onbeforeunload = null;
+    });
+  </script>
 
 <% end %>

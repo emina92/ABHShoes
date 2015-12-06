@@ -9,7 +9,7 @@ class Product < ActiveRecord::Base
 	validates :price, presence:true
   validates :category_id, presence:true
   validates :brand_id, presence:true
-  validates :description, length: { maximum: 100 }
+  validates :description, length: { maximum: 80 }
 
 	has_attached_file :image,
   	:storage => :dropbox,
