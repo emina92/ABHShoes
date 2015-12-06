@@ -5,8 +5,8 @@
     <input type="hidden" id="min_price" name="min_price" placeholder="Min price" class="form-control filter" value="<%= @min_price %>">
     <input type="hidden" id="max_price" name="max_price" placeholder="Max price" class="form-control filter" value="<%= @max_price %>">
     <div class="range-values">
-      <span id="min_price_label"><%= @min_price %></span>
-      <span id="max_price_label"><%= @max_price %></span>
+      <span id="min_price_label">$<%= @min_price or 0 %></span>
+      <span id="max_price_label">$<%= @max_price or 0 %></span>
     </div>
     <div id="slider-range" class="slider"></div>
     <script>
@@ -21,8 +21,8 @@
             var max = ui.values[1];
             $("#min_price").val(min);
             $("#max_price").val(max);
-            $("#min_price_label").text(min);
-            $("#max_price_label").text(max);
+            $("#min_price_label").text("$" + min);
+            $("#max_price_label").text("$" + max);
           }
         });
   });
@@ -46,7 +46,8 @@
       <option value="">Select size</option>
       <%= options_for_select(Product.size_options, @size) %>
     </select>
-    <input type="submit" value="Apply Filters" class="form-control">
+    <input type="submit" value="Apply Filters" class="apply-filter form-control btn-primary">
+    <%= link_to "Clear Filters",  url_for(:only_path => true), :class => "form-control btn btn-danger" %>
   </form>
 <% end %>
 
@@ -58,7 +59,7 @@
                <div class="caption">
                     <h4 class="pull-right">$<%= product.price %></h4>
                     <h4><%= link_to product.title, show_product_path(product.id) %></h4>
-                    <p><%= product.description %></p>
+                    <p class="single-item-description"><%= product.description %></p>
                </div>
             </div>
         </div>
