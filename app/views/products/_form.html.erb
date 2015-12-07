@@ -71,22 +71,21 @@
     <%= error_span(@product[:discount]) %>
   </div>
 
-  <h3>Product Variants </h3>
-   <div class="control-group">
-    <%= f.fields_for :product_variants do |product_variant| %>
-      <div class="controls variant">
-        <%= product_variant.label :size, :class => 'control-label required' %>
-        <%= product_variant.select :size, Product.size_options, { include_blank: true }, :class => 'form-control', required: true %>
-        <%= product_variant.label :quantity, :class => 'control-label required' %>
-        <%= product_variant.number_field :quantity, :class => 'form-control', required: true %>
-        <%= product_variant.label :color, :class => 'control-label required' %>
-        <%= product_variant.collection_select :color_id, @colors, :id, :name, { include_blank: true }, :class => 'form-control', required: true %>
-        <div class="checkbox">
-          <label><%= product_variant.check_box :_destroy %>Delete</label>
+  <% if @product.new_record? %>
+    <h3>Product Variants </h3>
+    <div class="control-group">
+      <%= f.fields_for :product_variants do |product_variant| %>
+        <div class="controls variant">
+          <%= product_variant.label :size, :class => 'control-label required' %>
+          <%= product_variant.select :size, Product.size_options, { include_blank: true }, :class => 'form-control', required: true %>
+          <%= product_variant.label :quantity, :class => 'control-label required' %>
+          <%= product_variant.number_field :quantity, :class => 'form-control', required: true %>
+          <%= product_variant.label :color, :class => 'control-label required' %>
+          <%= product_variant.collection_select :color_id, @colors, :id, :name, { include_blank: true }, :class => 'form-control', required: true %>
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+  <% end %>
 
   <div class="row">
     <%= f.submit nil, :class => 'btn btn-primary' %>
