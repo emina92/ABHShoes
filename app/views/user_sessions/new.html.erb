@@ -1,9 +1,9 @@
 <%= form_tag user_sessions_path, class: "form-horizontal login-form" do %>
 <p class="title">LOG IN</p>
-<input type="text" name="email" id="email" placeholder="Email Address (required)" class="form-control" required="true">
+<input type="text" name="email" id="email" placeholder="mail@example.com (required)" class="form-control" required="true">
 <br/>
 
-<input type="password" name="password" id="password" placeholder="Password (required)" class="form-control" required="true">
+<input type="password" name="password" id="password" placeholder="password (required)" class="form-control" required="true">
 <br/>
 
 <% if @bad_access %>
