@@ -27,7 +27,7 @@
         <td class="text-center"><%= product.brand.name %></td>
         <td class="text-center">
           <% if product.product_variants.any? %>
-            <%= link_to "Show variants", product_variant_path(product.id), class: "variant" %>
+            <%= link_to "Variants", product_product_variants_path(product.id), class: "variant" %>
           <% end %>
         </td>
         <td class="text-center"><%= product.created_at.strftime("%b %d, %Y") %></td>

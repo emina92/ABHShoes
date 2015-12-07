@@ -1,0 +1,61 @@
+<%= form_for [@product, @product_variant], :html => { :class => "form-horizontal product_variant col-md-6 col-lg-7" } do |f| %>
+
+    <% if @product_variant.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@product_variant.errors.count, "error") %> prohibited this product_variant from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @product_variant.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+   <div class="control-group">
+    <%= f.label :size, :class => 'control-label required' %>
+    <div class="controls">
+      <%= f.select :size, Product.size_options, { include_blank: true }, :class=>'form-control', required: true %>
+    </div>
+    <%= error_span(@product_variant[:size]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :quantity, :class => 'control-label required' %>
+      <div class="controls">
+        <%= f.number_field :quantity, :class => 'form-control', required: true %>
+      </div>
+    <%= error_span(@product_variant[:quantity]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :color_id, :class => 'control-label required' %>
+    <div class="controls">
+      <%= f.collection_select :color_id, @colors, :id, :name, { include_blank: true }, :class=>'form-control', required: true %>
+    </div>
+    <%= error_span(@product_variant[:color_id]) %>
+  </div>
+  
+  <div class="row">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                product_product_variants_path, :class => 'btn btn-default' %>
+  </div>
+  <script>
+    $("form").change(function () {
+      if (!window.onbeforeunload) {
+        window.onbeforeunload = function() {
+          return "You have unsaved changes.";
+        };
+      };
+    })
+
+    $("form").submit(function () {
+      window.onbeforeunload = null;
+    });
+  </script>
+
+<% end %>
