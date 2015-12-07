@@ -61,7 +61,6 @@
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= @current_user.full_name %> <span class="caret"></span></a>
                           <ul class="dropdown-menu">
                             <% if @current_user.has_role? (:admin) %>
-                                <li><a href="/admin">Admin</a></li>
                                 <li><%= link_to "Products", "/admin/products"  %></li>
                                 <li><%= link_to "Users", "/admin/users"  %></li>
                                 <li><%= link_to "Categories", "/admin/categories"  %></li>
