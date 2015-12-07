@@ -1,5 +1,7 @@
 class UserSessionsController < ApplicationController
-  layout false
+
+  before_filter :set_no_sidebar
+
   def new
   end
 
@@ -14,10 +16,14 @@ class UserSessionsController < ApplicationController
   	if user && user.authenticate(params[:password])
   		session[:user_id] = user.id
       redirect_to user
-  		flash[:success] = "Thanks for logging in!"
   	else
-      flash[:success] = "There was a problem logging in!"
+      @bad_access = true
   		render action: 'new'
   	end
   end
+
+  def set_no_sidebar
+    @no_sidebar = true
+  end
+
 end

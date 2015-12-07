@@ -1,4 +1,4 @@
-<%= form_for @category, :html => { :class => "form-horizontal category" } do |f| %>
+<%= form_for @category, :html => { :class => "form-horizontal category col-md-6 col-lg-7" } do |f| %>
 
     <% if @category.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -16,16 +16,16 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :name, :class => 'control-label required' %>
+    <%= f.label :name, :class => 'control-label required'%>
     <div class="controls">
-      <%= f.text_field :name, :class => 'form-control' %>
+      <%= f.text_field :name, :class => 'form-control', maxlength: 20, required: true %>
     </div>
     <%= error_span(@category[:title]) %>
   </div>
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :description, :class => 'form-control' %>
+      <%= f.text_field :description, :class => 'form-control', maxlength: 50 %>
     </div>
     <%= error_span(@category[:description]) %>
   </div>
@@ -35,5 +35,19 @@
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
               categories_path, :class => 'btn btn-default' %>
   </div>
+
+  <script>
+    $("form").change(function () {
+      if (!window.onbeforeunload) {
+        window.onbeforeunload = function() {
+          return "You have unsaved changes.";
+        };
+      };
+    })
+
+    $("form").submit(function () {
+      window.onbeforeunload = null;
+    });
+  </script>
 
 <% end %>

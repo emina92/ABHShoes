@@ -1,5 +1,5 @@
 class Color < ActiveRecord::Base
-	belongs_to :product
+	has_many :product_variants
 
 	validates :name, presence:true
 	validates :hex, presence:true

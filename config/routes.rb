@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get 'home/index'
   get 'products/:id' => 'home#show', :as => :show_product
+  
 
   resources :user_sessions, only: [:new, :create]
 
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :brands
     resources :colors
+    get '/products/:id/variants' => 'products#show_variant', :as => :product_variant
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

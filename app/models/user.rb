@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
   rolify
 	has_secure_password
-	validates :password, presence:true, :on => :create
-	validates :full_name, presence: true
+	validates :password, presence:true, :on => :create, length: { in: 6..20 }
+	validates :full_name, presence: true, length: { in: 6..50 }
 	validates :email, presence: true, uniqueness: true,
 										format: {
-											with:/\A[^@\s]+@([^@.\s]+\.)*[^@.\s]+\z/
+											with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 										}
 end

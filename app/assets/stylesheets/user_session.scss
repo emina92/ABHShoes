@@ -10,7 +10,7 @@
 	padding-bottom: 15px;
 
 	.title{
-		background: #428bca;
+		background: #505050;
 		color: #fff;
 		padding: 15px;
 		font-size: 20px;
@@ -20,12 +20,17 @@
 		margin: 0 auto;
 		width:90%;
 	}
-	.btn {
+	.btn-login {
 		margin: 0 auto;
 		width: 90%;
 		display: block;
+		background: #505050;
+		color: #fff;
 	}
-
+	.bad-login {
+		text-align: center;
+		color: #BF1515;
+	}
 }
 
 

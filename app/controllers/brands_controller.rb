@@ -1,6 +1,5 @@
-class BrandsController < ApplicationController
+class BrandsController < AdminController
   before_action :set_brand, only: [:show, :edit, :update, :destroy]
-  layout "admin"
 
   # GET /brands
   def index
