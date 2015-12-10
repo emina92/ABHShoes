@@ -1,0 +1,32 @@
+// Place all the styles related to the cart controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.nav-cart-1 {
+	right: 15px;
+	font-size: 14px;
+	width: 19px;
+}
+
+#nav-cart-count {
+	color: white;
+    top: 7px;
+    left: 22px;
+    position: absolute;
+    text-align: center;
+    background-color: red;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 18px;
+}
+
+.update-cart-item {
+	width: 90%;
+	margin: 8px auto;
+}
+.buy {
+    margin-top: 15px;
+    width: 150px;
+}

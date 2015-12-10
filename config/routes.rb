@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  
+  get '/cart' => 'cart#index'
+  get '/cart/clear' => 'cart#clear_cart', :as => :clear_cart
+  get '/cart/:id' => 'cart#add'
+  post '/cart/set_quantity' => 'cart#set_quantity'
+
   get 'store/:id' => 'store#show', :as => :store_product
 
   get 'login'   => 'user_sessions#new'
@@ -6,9 +12,10 @@ Rails.application.routes.draw do
 
   get 'home/index'
   get 'products/:id' => 'home#show', :as => :show_product
-  
 
   resources :user_sessions, only: [:new, :create]
+  resources :charges
+  
 
   scope :admin do
     get '' => 'admin#index'
