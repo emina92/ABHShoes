@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	has_many :cart_items
   rolify
 	has_secure_password
 	validates :password, presence:true, :on => :create, length: { in: 6..20 }
@@ -7,4 +8,14 @@ class User < ActiveRecord::Base
 										format: {
 											with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 										}
+	def total_quantity
+		self.cart_items.sum(:quantity)
+	end
+	def total_price
+		total = 0
+		self.cart_items.each do |item|
+			total += item.quantity * item.product.price
+		end
+		return total
+	end
 end
