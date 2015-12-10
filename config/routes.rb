@@ -15,6 +15,9 @@ Rails.application.routes.draw do
 
   resources :user_sessions, only: [:new, :create]
   resources :charges
+
+  post 'sign_up' => 'registration#create'
+  get 'sign_up' => 'registration#new'
   
 
   scope :admin do
