@@ -13,8 +13,12 @@
  *= require jquery-ui
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 
  input[type=file] {
  	height: auto;
+ }
+ .fa.fa-shopping-cart {
+ 	font-size: 28px;
  }
