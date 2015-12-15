@@ -6,6 +6,7 @@ gem 'rails', '4.2.4'
 gem 'bcrypt', '~> 3.1.2'
 gem "paperclip", "~> 4.3"
 gem "paperclip-dropbox", ">= 1.1.7"
+gem 'aws-sdk-v1'
 # Use SCSS for stylesheets
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
@@ -27,7 +28,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+gem 'country_select'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
