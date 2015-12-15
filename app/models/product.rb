@@ -13,12 +13,22 @@ class Product < ActiveRecord::Base
   validates :description, length: { maximum: 80 }
 
 	has_attached_file :image,
-  	:storage => :dropbox,
-    :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
-    :dropbox_visibility => 'public'
-  	validates_attachment :image,
+  	:storage => :s3,
+    :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
+
+  
+
+  validates_attachment :image,
   	:presence => true,
   	:content_type => { :content_type => /^image\/(jpeg|png|gif|tiff)$/ }
+  
+  def s3_credentials
+    {
+      :bucket => ENV["S3_BUCKET"],
+      :access_key_id => ENV["ACCESS_KEY_ID"],
+      :secret_access_key => ENV["SECRET_ACCESS_KEY"]
+    }
+  end
 
   def self.get_discounted_items
     self.where("discount IS NOT NULL")
