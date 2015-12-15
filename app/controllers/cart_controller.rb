@@ -1,5 +1,6 @@
 class CartController < ApplicationController
   before_action :check_authentication, expect: [:index]
+  before_action :set_no_sidebar
   
   def add
     @product_item = @current_user.cart_items.where("product_id = ?", params[:id]).first
@@ -28,10 +29,61 @@ class CartController < ApplicationController
   def set_quantity
     cart_item = @current_user.cart_items.find(params[:cart_item_id])
     quantity = params[:quantity]
-
+    
     cart_item.quantity = quantity
     cart_item.save()
 
     redirect_to :action => :index
   end
+
+  def checkout
+    @addresses = @current_user.shipping_addresses
+    @address = ShippingAddress.new
+  end
+
+  def place_order
+    @address = ShippingAddress.find(params[:address_id])
+  end
+
+  def create_charge
+      # Amount in cents
+      tmp = @current_user.total_price * 100
+      @amount_dollar = @current_user.total_price + 10
+      @amount = tmp.to_i
+
+      customer = Stripe::Customer.create(
+      :email => params[:stripeEmail],
+      :source  => params[:stripeToken]
+      )
+
+    charge = Stripe::Charge.create(
+      :customer    => customer.id,
+      :amount      => @amount,
+      :description => 'ABH-Shoes order',
+      :currency    => 'usd'
+    )
+
+    @current_user.cart_items.delete_all
+
+  rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to new_charge_path
+  end
+
+  def create_address
+    @address = ShippingAddress.new(shipping_address_params)
+    @address.user = @current_user
+    @address.save
+    redirect_to "/cart/place_order?address_id=#{@address.id}"
+  end
+
+
+  private
+    def shipping_address_params
+      params.require(:shipping_address).permit(:full_name, :address, :city, :state, :zip, :country, :phone_number, :user_id)
+    end
+
+    def set_no_sidebar
+      @no_sidebar = true
+    end
 end

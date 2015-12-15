@@ -23,10 +23,49 @@
 }
 
 .update-cart-item {
-	width: 90%;
+	width: 80%;
 	margin: 8px auto;
 }
 .buy {
-    margin-top: 15px;
-    width: 150px;
+    margin: 12px auto 0;
+    width: 90%;
+    display: block;
+}
+.address {
+  padding: 8px;
+  color: #777;
+  text-align: left;
+}
+
+#new_shipping_address .control-group {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+#new_shipping_address input[type=submit] {
+    margin-top: 6px;
+}
+
+.order-details {
+    text-align: right;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.order-details-place-order {
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.order-details span {
+    color: #666;
+}
+.order-details strong {
+    color: #333;
+}
+.quantity {
+   width: 80%;
+   margin: 0 auto;
+}
+.quantity-label {
+   margin-left: 22px;
 }

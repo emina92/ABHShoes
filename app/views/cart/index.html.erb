@@ -1,37 +1,54 @@
-<% total = 0 %>
 <div class="row">
-	<% @cart_items.each  do |item| %>
-		<div class="col-xs-12 col-md-4 col-lg-4 product">
-      <%= link_to show_product_path(item.product.id) do %>
-            <div class="thumbnail">
-              <form class="form" method="post" action="/cart/set_quantity">
-                <%= image_tag item.product.image %>
-                <div class="caption">
-                    <h4 class="pull-right">$<%= item.product.price %></h4>
-                    <h4><%= item.product.title %></h4>
-                    <p class="single-item-description"><%= item.product.description %></p>
-	               </div>
-                 <% end %>
-                <label>Quantity: </label>
-                <select name="quantity">
-                  <option value="">Select quantity</option>
-                  <%= options_for_select(CartItem.quantity_options, item.quantity) %>
-                </select>
-                <input class="form-control input-sm update-cart-item" type="submit" value="Update">
-                <input type="hidden" value="<%= item.id %>" name="cart_item_id">
-                <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token">
-              </form>
-	           </div>
-	     </div>
-	     <% total += item.quantity * item.product.price %>
-	<% end %>
+  <div class="col-xs-9">
+  	<% @cart_items.each  do |item| %>
+  		<div class="col-xs-12 col-md-4 col-lg-4 product">
+        <%= link_to show_product_path(item.product.id) do %>
+              <div class="thumbnail">
+                <form class="form" method="post" action="/cart/set_quantity">
+                  <%= image_tag item.product.image %>
+                  <div class="caption">
+                      <h4 class="pull-right">$<%= item.product.price %></h4>
+                      <h4><%= item.product.title %></h4>
+                      <p class="single-item-description"><%= item.product.description %></p>
+  	               </div>
+                   <% end %>
+                   <label class="quantity-label">Quantity: </label>
+                  <div class="control-group">
+                      <div class="controls">
+                        <%= number_field_tag :quantity, item.quantity, :step => 'any', :class => 'form-control quantity'%>
+                      </div>
+                  </div>
+                  <input class="form-control input-sm update-cart-item btn-primary" type="submit" value="Update">
+                  <input type="hidden" value="<%= item.id %>" name="cart_item_id">
+                  <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token">
+                </form>
+  	           </div>
+  	     </div>
+  	<% end %>
+  </div>
+  <div class="col-xs-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Your order</h3>
+      </div>
+      <div class="panel-body">
+        <% if @current_user.cart_items.empty? %>
+          <p>Your cart is currently empty</p>
+        <% else %>
+          <div class="order-details">
+            <span>Order</span><br>
+            <strong><%= number_to_currency(@current_user.total_price) %></strong><br>
+            <span>Shipping</span><br>
+            <strong>10.00$</strong>
+            <hr>
+            <span>Total</span><br>
+            <strong><%= number_to_currency(@current_user.total_with_shipping) %></strong>
+          </div>
+          <%= link_to "Proceed to checkout", checkout_path, :class => 'btn btn-primary buy' %> 
+          <%= link_to "Empty your cart", clear_cart_path, :class => 'btn btn-danger buy' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
-
-<% if @current_user.cart_items.empty? %>
-  <p>Yout cart is currently empty</p>
-<% else %>
-  <p><b>Total price: <%= number_to_currency(total, :unit => '$') %></b></p>
-  <%= link_to "Buy", new_charge_path, :class => 'btn btn-primary buy' %>
-  <%= link_to "Empty Your Cart", clear_cart_path, :class => 'btn btn-primary buy' %>
-<% end %>
