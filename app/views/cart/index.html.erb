@@ -7,7 +7,7 @@
                 <form class="form" method="post" action="/cart/set_quantity">
                   <%= image_tag item.product.image %>
                   <div class="caption cart-caption">
-                      <h4>$<%= item.product.price %></h4>
+                      <h4>$<%= item.product.apply_discount.round(2) %></h4>
                       <h4 class="product-title"><%= item.product.title %></h4>
                       <p class="single-item-description"><%= item.product.description %></p>
   	               </div>
@@ -39,7 +39,7 @@
             <span>Order</span><br>
             <strong><%= number_to_currency(@current_user.total_price) %></strong><br>
             <span>Shipping</span><br>
-            <strong>10.00$</strong>
+            <strong>$10.00</strong>
             <hr>
             <span>Total</span><br>
             <strong><%= number_to_currency(@current_user.total_with_shipping) %></strong>

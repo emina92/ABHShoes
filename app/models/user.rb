@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 	def total_price
 		total = 0
 		self.cart_items.each do |item|
-			total += item.quantity * item.product.price
+			total += item.quantity * item.product.apply_discount
 		end
 		return total
 	end

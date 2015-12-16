@@ -57,7 +57,7 @@
             <div class="thumbnail">
                <%= image_tag product.image %>
                <div class="caption">
-                    <h4>$<%= product.price %></h4>
+                    <h4>$<%= product.apply_discount.round(2)%></h4>
                     <h4 class="product-title"><%= product.title %></h4>
                     <p class="single-item-description"><%= product.description %></p>
            <% end %>
