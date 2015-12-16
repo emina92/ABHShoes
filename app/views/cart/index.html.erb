@@ -6,9 +6,9 @@
               <div class="thumbnail">
                 <form class="form" method="post" action="/cart/set_quantity">
                   <%= image_tag item.product.image %>
-                  <div class="caption">
-                      <h4 class="pull-right">$<%= item.product.price %></h4>
-                      <h4><%= item.product.title %></h4>
+                  <div class="caption cart-caption">
+                      <h4>$<%= item.product.price %></h4>
+                      <h4 class="product-title"><%= item.product.title %></h4>
                       <p class="single-item-description"><%= item.product.description %></p>
   	               </div>
                    <% end %>

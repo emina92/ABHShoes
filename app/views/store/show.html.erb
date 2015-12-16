@@ -50,7 +50,6 @@
     <%= link_to "Clear Filters",  url_for(:only_path => true), :class => "form-control btn btn-danger" %>
   </form>
 <% end %>
-
 <div class="row">
     <% @products.each { |product| %>
         <div class="col-xs-12 col-md-4 col-lg-4 product">
@@ -58,11 +57,11 @@
             <div class="thumbnail">
                <%= image_tag product.image %>
                <div class="caption">
-                    <h4 class="pull-right">$<%= product.price %></h4>
-                    <h4><%= product.title %></h4>
+                    <h4>$<%= product.price %></h4>
+                    <h4 class="product-title"><%= product.title %></h4>
                     <p class="single-item-description"><%= product.description %></p>
            <% end %>
-                    <a href="/cart/<%= product.id %>" class="btn btn-primary add">Add To Cart</a>
+                    <a href="/cart/<%= product.id %>" class="btn btn-sm btn-primary">Add To Cart</a>
                </div>
             </div>
         </div>

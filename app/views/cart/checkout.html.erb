@@ -30,7 +30,13 @@
 	</form>
 </div>
 <% end %>
-
+<div class="row">
+	<div class="col-xs-12">
+		<p>Billing address: </p>
+		<%= check_box_tag :billing_address %>
+		<%= label_tag :billing_address, "Use shipping address" %>
+	</div>
+</div>
 <div class="row">
 	<div class="col-xs-12">
 		<h2>Enter a new shipping address</h2>
@@ -95,11 +101,4 @@
 
 	  	<input class="form-control btn btn-success" type="submit" value="Use new address">
 	<% end %>  
-</div>
-<div class="row">
-	<div class="col-xs-12">
-		<p>Billing address: </p>
-		<%= check_box_tag :billing_address %>
-		<%= label_tag :billing_address, "Use shipping address" %>
-	</div>
 </div>

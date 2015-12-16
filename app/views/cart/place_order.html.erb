@@ -2,17 +2,17 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th class="text-center">Name</th>
-        <th class="text-center">Quantity</th>
-        <th class="text-center">Price</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th class="text-right">Price</th>
       </tr>
     </thead>
     <tbody>
       <% @current_user.cart_items.each  do |item| %>
         <tr>
-          <td class="text-center"><%= item.product.title %></td>
-          <td class="text-center"><%= item.quantity %></td>
-          <td class="text-center"><%= item.product.price %></td>
+          <td><%= item.product.title %></td>
+          <td><%= item.quantity %></td>
+          <td class="text-right">$<%= item.product.price %></td>
         </tr>
       <% end %>
     <tbody>
@@ -35,7 +35,7 @@
                 <span>Order</span><br>
                 <strong><%= number_to_currency(@current_user.total_price) %></strong><br>
                 <span>Shipping</span><br>
-                <strong>10.00$</strong>
+                <strong>$10.00</strong>
                 <hr>
                 <span>Total</span><br>
                 <strong><%= number_to_currency(@current_user.total_with_shipping) %></strong>

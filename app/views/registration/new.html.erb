@@ -47,10 +47,6 @@
 
   <div class="row">
    <%= submit_tag "Create your account", class: "btn btn-default form-control create" %>
-   <% if flash[:notice] %>
-    <p id="notice"><%= flash[:notice] %></p>
-    flash.discard(:notice)
-  <% end %>
   </div>
 
 <% end %>
