@@ -22,8 +22,11 @@ body {
 }
 
 .caption {
-    height: 130px;
+    height: 150px;
     overflow: hidden;
+}
+.caption.cart-caption {
+    height: 115px;
 }
 
 .caption h4 {

@@ -50,16 +50,18 @@
     <%= link_to "Clear Filters",  url_for(:only_path => true), :class => "form-control btn btn-danger" %>
   </form>
 <% end %>
-
 <div class="row">
     <% @products.each { |product| %>
-        <div class="col-sm-1 col-lg-4 col-md-1">
+        <div class="col-xs-12 col-md-4 col-lg-4 product">
+          <%= link_to show_product_path(product.id) do %>
             <div class="thumbnail">
                <%= image_tag product.image %>
                <div class="caption">
-                    <h4 class="pull-right">$<%= product.price %></h4>
-                    <h4><%= link_to product.title, show_product_path(product.id) %></h4>
+                    <h4>$<%= product.apply_discount.round(2)%></h4>
+                    <h4 class="product-title"><%= product.title %></h4>
                     <p class="single-item-description"><%= product.description %></p>
+           <% end %>
+                    <a href="/cart/<%= product.id %>" class="btn btn-sm btn-primary">Add To Cart</a>
                </div>
             </div>
         </div>

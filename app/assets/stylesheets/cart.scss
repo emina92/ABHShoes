@@ -1,0 +1,75 @@
+// Place all the styles related to the cart controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.nav-cart-1 {
+	right: 15px;
+	font-size: 14px;
+	width: 19px;
+}
+
+#nav-cart-count {
+	color: white;
+    top: 7px;
+    left: 22px;
+    position: absolute;
+    text-align: center;
+    background-color: red;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 18px;
+}
+
+.update-cart-item {
+	width: 80%;
+	margin: 8px auto;
+}
+.buy {
+    margin: 12px auto 0;
+    width: 90%;
+    display: block;
+}
+.address {
+  padding: 8px;
+  color: #777;
+  text-align: left;
+}
+
+#new_shipping_address .control-group {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+#new_shipping_address input[type=submit] {
+    margin-top: 6px;
+}
+
+.order-details {
+    text-align: right;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.order-details-place-order {
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.order-details span {
+    color: #666;
+}
+.order-details strong {
+    color: #333;
+}
+.quantity {
+   width: 80%;
+   margin: 0 auto;
+}
+.quantity-label {
+   margin-left: 22px;
+}
+.stripe-button-el {
+    margin: 10px auto 0;
+    display: block !important;
+}

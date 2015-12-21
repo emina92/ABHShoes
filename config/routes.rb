@@ -1,14 +1,27 @@
 Rails.application.routes.draw do
+
+  post 'cart/create_charge' => 'cart#create_charge', :as => :create_charge
+  post '/cart/create_address' => 'cart#create_address', :as => :create_address
+  get '/cart/place_order' => 'cart#place_order', :as => :place_order
+  get '/cart/checkout' => 'cart#checkout', :as => :checkout
+  get '/cart' => 'cart#index'
+  get '/cart/clear' => 'cart#clear_cart', :as => :clear_cart
+  get '/cart/:id' => 'cart#add'
+  post '/cart/set_quantity' => 'cart#set_quantity'
+
   get 'store/:id' => 'store#show', :as => :store_product
 
   get 'login'   => 'user_sessions#new'
   get 'logout'  => 'user_sessions#destroy'
 
-  get 'home/index'
+  get 'home/index', :as => :home
   get 'products/:id' => 'home#show', :as => :show_product
-  
 
   resources :user_sessions, only: [:new, :create]
+  
+  post 'sign_up' => 'registration#create'
+  get 'sign_up' => 'registration#new'
+  
 
   scope :admin do
     get '' => 'admin#index'

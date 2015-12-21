@@ -1,0 +1,53 @@
+<div class="col-xs-9">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th class="text-right">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @current_user.cart_items.each  do |item| %>
+        <tr>
+          <td><%= item.product.title %></td>
+          <td><%= item.quantity %></td>
+          <td class="text-right">$<%= item.product.price %></td>
+        </tr>
+      <% end %>
+    <tbody>
+  </table>
+</div>
+<div class="col-xs-3">
+  <%= form_tag create_charge_path do %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title">Your order</h3>
+      </div>
+      <div class="panel-body">
+      <article>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+        <div class="order-details-place-order">
+                <span>Order</span><br>
+                <strong><%= number_to_currency(@current_user.total_price) %></strong><br>
+                <span>Shipping</span><br>
+                <strong>$10.00</strong>
+                <hr>
+                <span>Total</span><br>
+                <strong><%= number_to_currency(@current_user.total_with_shipping) %></strong>
+        </div>
+      </article>
+
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="Order of shoes"
+              data-amount=<%= @current_user.total_with_shipping * 100%>
+              data-locale="auto"></script>
+      </div>
+    </div>
+  <% end %>
+</div>

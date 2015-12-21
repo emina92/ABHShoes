@@ -1,8 +1,6 @@
 class StoreController < ApplicationController
 	def show
 		@category = Category.find(params[:id])
-		@brand = Brand.find(params[:id])
-		@color = Color.find(params[:id])
 		@price_max = Product.maximum("price")
 		@min_price = params[:min_price]
 		@max_price = params[:max_price]

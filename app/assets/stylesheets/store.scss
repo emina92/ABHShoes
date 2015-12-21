@@ -34,5 +34,10 @@ p.filter {
 	margin-bottom: 10px;
 }
 .single-item-description {
-	word-wrap: break-word;
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+}
+.add {
+	height: 30px;
 }
